@@ -228,6 +228,14 @@ void VolumeManager::handleBlockEvent(NetlinkEvent* evt) {
 
                     auto disk =
                         new android::vold::Disk(eventPath, device, source->getNickname(), flags);
+
+                    android::vold::Disk* disk = (source->getPartNum() == -1) ?
+                            new android::vold::Disk(eventPath, device,
+                                    source->getNickname(), flags) :
+                            new android::vold::DiskPartition(eventPath, device,
+                                    source->getNickname(), flags,
+                                    source->getPartNum(),
+                                    source->getFsType(), source->getMntOpts());
                     handleDiskAdded(std::shared_ptr<android::vold::Disk>(disk));
                     break;
                 }
