@@ -19,6 +19,7 @@
 
 #include "KeyBuffer.h"
 
+#include <cutils/multiuser.h>
 #include <string>
 
 namespace android {
