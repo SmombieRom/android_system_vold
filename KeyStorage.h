@@ -39,6 +39,14 @@ class KeyAuthentication {
     const std::string secret;
 };
 
+
+enum class KeyType {
+    DE_SYS,
+    DE_USER,
+    CE_USER,
+    ME,
+};
+
 extern const KeyAuthentication kEmptyAuthentication;
 
 // Checks if path "path" exists.
