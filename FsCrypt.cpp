@@ -199,6 +199,14 @@ static bool read_and_fixate_user_ce_key(userid_t user_id,
     return false;
 }
 
+bool is_wrapped_key_supported() {
+    return GetEntryForMountPoint(&fstab_default, DATA_MNT_POINT)->fs_mgr_flags.wrapped_key;
+}
+
+bool is_wrapped_key_supported_external() {
+    return false;
+}
+
 static bool read_and_install_user_ce_key(userid_t user_id,
                                          const android::vold::KeyAuthentication& auth) {
     if (s_ce_key_raw_refs.count(user_id) != 0) return true;
